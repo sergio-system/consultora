@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Catalogo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let catalogo of catalogos">
+
+      <button ion-item (click)="alteraCatalogo(catalogo.Codigo, catalogo.Descricao)">
+        <h1>{{Funcoes.formataInt(catalogo.Codigo,3)}} - {{catalogo.Descricao }}</h1>
+      </button>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="incluiCatalogo()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

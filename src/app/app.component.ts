@@ -3,8 +3,12 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { CatalogoPage } from '../pages/catalogo/catalogo';
+import { GrupoPage } from '../pages/grupo/grupo';
+import { VendaPage } from '../pages/venda/venda';
+import { ProdutoPage } from '../pages/produto/produto';
+import { ClientePage } from '../pages/cliente/cliente';
+import { DatabaseProvider } from '../providers/database/database';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,19 +16,38 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = null;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, 
+              public statusBar: StatusBar, 
+              public splashScreen: SplashScreen,
+              public dbprovider:DatabaseProvider) {
+    dbprovider.createrdatabase()
+    .then(()=>{
+      this.abreVenda();
+    })
+    .catch(e=>{
+      alert('Banco não foi Criado: '+e);
+      this.abreVenda();
+    });
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Catálogo', component: CatalogoPage },
+      { title: 'Grupo de Produtos', component: GrupoPage },
+      { title: 'Produtos', component: ProdutoPage },
+      { title: 'Clientes', component: ClientePage },
+      { title: 'Venda', component: VendaPage }
     ];
 
+  }
+
+  public abreVenda(){
+    this.rootPage=VendaPage;
   }
 
   initializeApp() {

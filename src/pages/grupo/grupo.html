@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Grupo de Produtos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let grupo of grupos">
+      <button ion-item (click)="alteraGrupo(grupo.Codigo, grupo.Descricao)">
+        <h1>{{Funcoes.formataInt(grupo.Codigo,3)}} - {{grupo.Descricao }}</h1>
+      </button>
+    </ion-item-sliding>
+  </ion-list>
+  
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="incluiGrupo()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Clientes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="pesquisa($event)">
+  </ion-searchbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let cliente of clientesconsulta">
+      <button ion-item
+        (click)="alteraCliente(cliente.Telefone, cliente.Nome, cliente.Endereco, cliente.Bairro, cliente.Cidade, cliente.Uf, cliente.Seco, cliente.DiaAniversario, cliente.MesAniversario)">
+        <h1>{{cliente.Nome}}</h1>
+        <ion-grid>
+          <ion-row>
+            <ion-col align-self-right text-right>
+              <strong>R$ {{cliente.Telefone}}</strong>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </button>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="incluiCliente()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

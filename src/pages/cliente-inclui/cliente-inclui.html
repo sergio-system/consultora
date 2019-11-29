@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Inclui Cliente</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Telefone:</ion-label>
+      <ion-input type="tel" mask="(99)99999-9999" (ionBlur)="testatelefone()" [(ngModel)]="telefone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Nome:</ion-label>
+      <ion-input [(ngModel)]="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Endereço:</ion-label>
+      <ion-input [(ngModel)]="endereco"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Bairro:</ion-label>
+      <ion-input [(ngModel)]="bairro"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Cidade:</ion-label>
+      <ion-input [(ngModel)]="cidade"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Estado:</ion-label>
+        <ion-select [multiple]=false [(ngModel)]="uf"  cancelText="Cancela" okText="OK">
+          <ion-option *ngFor="let estado of ufs" value={{estado.sigla}}>{{estado.sigla}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Sexo:</ion-label>
+        <ion-select [multiple]=false [(ngModel)]="sexo" cancelText="Cancela" okText="OK">
+          <ion-option *ngFor="let sex of sexos" value={{sex.codigo}}>{{sex.descricao}}</ion-option>
+        </ion-select>
+  </ion-item>
+    <ion-item>
+      <ion-label floating>Mes Aniversário:</ion-label>
+        <ion-select [multiple]=false [(ngModel)]="mesaniversario" (ionBlur)="CarregaDias()" cancelText="Cancela" okText="OK">
+          <ion-option *ngFor="let mes of meses" value={{mes.codigo}}>{{mes.descricao}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Dia Aniversário:</ion-label>
+        <ion-select [multiple]=false [(ngModel)]="diaaniversario" cancelText="Cancela" okText="OK">
+          <ion-option *ngFor="let dia of dias" value={{dia.dia}}>{{dia.dia}}</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="inclui()">Inclui</button>
+  <button ion-button (click)="cancela()">Cancela</button>
+</ion-content>

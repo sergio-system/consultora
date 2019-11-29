@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Inclui Produto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Catalogo:</ion-label>
+      <ion-select [multiple]=false [(ngModel)]="catalogoproduto" cancelText="Cancela" okText="OK">
+        <ion-option *ngFor="let catalogo of catalogos" value={{catalogo.codigo}}>{{catalogo.descricao}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Grupo:</ion-label>
+      <ion-select [multiple]=false [(ngModel)]="grupoproduto" cancelText="Cancela" okText="OK">
+        <ion-option *ngFor="let grupo of grupos" value={{grupo.codigo}}>{{grupo.descricao}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Descricao:</ion-label>
+      <ion-input type="text" [(ngModel)]="descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Preço:</ion-label>
+      <ion-input type="number"   [(ngModel)]="preco"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="inclui()">Inclui</button>
+  <button ion-button (click)="cancela()">Cancela</button>
+
+</ion-content>

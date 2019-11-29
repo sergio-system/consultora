@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Produtos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="pesquisa($event)">
+  </ion-searchbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let produto of produtosconsulta">
+      <button ion-item (click)="alteraProduto(produto.Codigo, produto.Catalogo,produto.Grupo,produto.Descricao,produto.Preco)">
+      <h1>{{produto.Descricao}}</h1>
+      <ion-grid>
+        <ion-row>
+          <ion-col align-self-right text-right>
+            <strong>R$ {{Funcoes.formata(produto.Preco)}}</strong>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      </button>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="incluiProduto()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

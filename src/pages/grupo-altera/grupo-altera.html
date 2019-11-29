@@ -1,0 +1,26 @@
+<!--
+  Generated template for the GrupoAlteraPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>grupoAltera</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Código:<br>{{Funcoes.formataInt(codigo,3)}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Descricao:</ion-label>
+      <ion-input type="text" [(ngModel)]="descricao"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="altera()">Altera</button>
+  <button ion-button (click)="deleta()">Deleta</button>
+  <button ion-button (click)="cancela()">Cancela</button>
+</ion-content>
